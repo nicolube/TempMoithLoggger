@@ -41,7 +41,7 @@ export class DatabaseManager {
     }
 
     async getToken(token: string) : Promise<ApiKeyDocument|null> {
-        const result =  await this.con?.query('SELECT k.id as keyId, k.`key`, k.created_at as keyCreated_at, k.user_id\
+        const result =  await this.con?.query('SELECT k.id as keyId, k.`key`, k.created_at as keyCreated_at\
         FROM api_keys k WHERE k.`key`=?;', [token]);
         if (result.length <= 0) {
             return null;
